@@ -5,21 +5,23 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import will.shiro.groceriesstore.domain.entity.FoodCategory
 import will.shiro.groceriesstore.domain.usecase.foodcategory.SaveFoodCategories
 
-@Controller
 @RequestMapping("/food_category")
+@RestController
 class FoodCategoryController {
 
     @GetMapping
-    fun getCategories() {
+    fun getCategories(): String {
         saveFoodCategories.execute(
             FoodCategory(1),
             FoodCategory(2),
             FoodCategory(3),
             FoodCategory(4)
         )
+        return "Deu certo"
     }
 
     @Autowired
